@@ -22,6 +22,16 @@ logging.level:
 
 
 
+token:
+  secret:
+    key: SpringBootJWTHelperTokenSecretKeyValue123!@#
+  access-token:
+    plus-hour: 1
+  refresh-token:
+    plus-hour: 12
+
+
+
 
 
 
