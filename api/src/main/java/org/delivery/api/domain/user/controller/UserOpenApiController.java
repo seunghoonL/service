@@ -2,6 +2,7 @@ package org.delivery.api.domain.user.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.delivery.api.common.api.Api;
+import org.delivery.api.domain.controller.model.TokenResponse;
 import org.delivery.api.domain.user.business.UserBusiness;
 import org.delivery.api.domain.user.controller.model.UserLoginRequest;
 import org.delivery.api.domain.user.controller.model.UserRegisterRequest;
@@ -32,7 +33,7 @@ public class UserOpenApiController {
 
 
     @PostMapping("/login")
-    public Api<UserResponse> login(@Valid @RequestBody Api<UserLoginRequest> request){
+    public Api<TokenResponse> login(@Valid @RequestBody Api<UserLoginRequest> request){
         var response = userBusiness.login(request.getBody());
 
         return Api.ok(response);

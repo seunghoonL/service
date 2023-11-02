@@ -1,3 +1,4 @@
+
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -29,7 +30,8 @@ token:
     plus-hour: 1
   refresh-token:
     plus-hour: 12
-
+server:
+  port: 22000
 
 
 

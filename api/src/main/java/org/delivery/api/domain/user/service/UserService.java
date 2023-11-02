@@ -34,12 +34,20 @@ public class UserService {
     }
 
 
-    public UserEntity findLoginByUser(String email, String password){
+    public UserEntity getUserWithThrow(String email, String password){
         UserEntity findEntity = userRepository
                 .findFirstByEmailAndPasswordAndStatusOrderByIdDesc(email, password, UserStatus.REGISTERED)
-                .orElseThrow(() -> new ApiException(UserErrorCode.USER_NOT_FOUND, "User is NotFound"));
+                .orElseThrow(() -> new ApiException(UserErrorCode.USER_NOT_FOUND, "User is Not Found"));
 
         findEntity.setLastLoginAt(LocalDateTime.now());
         return findEntity;
     }
+
+    public UserEntity getUserWithThrow(Long userId) {
+        UserEntity findEntity = userRepository.findFirstByIdAndStatusOrderByIdDesc(userId, UserStatus.REGISTERED)
+                .orElseThrow(() -> new ApiException(UserErrorCode.USER_NOT_FOUND, "User in Not Found"));
+
+        return findEntity;
+    }
+
 }

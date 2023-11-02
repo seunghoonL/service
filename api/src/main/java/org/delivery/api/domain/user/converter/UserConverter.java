@@ -6,6 +6,7 @@ import org.delivery.api.common.error.ErrorCode;
 import org.delivery.api.common.exception.ApiException;
 import org.delivery.api.domain.user.controller.model.UserRegisterRequest;
 import org.delivery.api.domain.user.controller.model.UserResponse;
+import org.delivery.api.domain.user.model.User;
 import org.delivery.db.user.UserEntity;
 
 import java.util.Optional;
@@ -42,5 +43,21 @@ public class UserConverter {
                             .unregisterAt(entity.getUnregisterAt())
                             .lastLoginAt(entity.getLastLoginAt())
                             .build()).orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT, "UserEntity Null"));
+    }
+
+
+    public UserResponse toUserResponseFromUser(User user){
+
+        return Optional.ofNullable(user).map(it ->
+                UserResponse.builder()
+                        .id(it.getId())
+                        .name(it.getName())
+                        .status(it.getStatus())
+                        .email(it.getEmail())
+                        .address(it.getAddress())
+                        .registerAt(it.getRegisterAt())
+                        .unregisterAt(it.getUnregisterAt())
+                        .lastLoginAt(it.getLastLoginAt())
+                        .build()).orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT, "UserEntity Null"));
     }
 }
