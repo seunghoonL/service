@@ -1,6 +1,7 @@
 package org.delivery.api.domain.userorder.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.delivery.api.common.error.ErrorCode;
 import org.delivery.api.common.exception.ApiException;
 import org.delivery.db.userorder.UserOrderEntity;
@@ -12,13 +13,13 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-
+@Slf4j
 @Transactional
 @RequiredArgsConstructor
 @Service
 public class UserOrderService {
 
-    private UserOrderRepository userOrderRepository;
+    private final UserOrderRepository userOrderRepository;
 
 
 
@@ -30,6 +31,7 @@ public class UserOrderService {
                     it.setStatus(UserOrderStatus.ORDER);
                     it.setOrderedAt(LocalDateTime.now());
 
+                    log.info("it : {}", it);
                     return userOrderRepository.save(it);
                 }).orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
     }
