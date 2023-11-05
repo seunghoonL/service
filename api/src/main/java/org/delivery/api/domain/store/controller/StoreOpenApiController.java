@@ -22,8 +22,8 @@ public class StoreOpenApiController {
 
     @PostMapping("/register")
     public Api<StoreResponse> register(@Valid @RequestBody StoreRegisterRequest registerRequest){
-        var result = storeBusiness.register(registerRequest);
+        var response = storeBusiness.register(registerRequest);
 
-        return  Api.ok(result);
+        return  Api.ok(response);
     }
 }

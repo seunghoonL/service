@@ -18,7 +18,7 @@ public class StoreApiController {
     private final StoreBusiness storeBusiness;
 
 
-    @GetMapping("")
+    @GetMapping("/search")
     public Api<List<StoreResponse>> search(@RequestParam(required = false) StoreCategory category){
 
         var searchResult  =storeBusiness.searchCategory(category);

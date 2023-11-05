@@ -8,6 +8,7 @@ import org.delivery.db.store.enums.StoreCategory;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Data
@@ -21,16 +22,16 @@ public class StoreRegisterRequest {
     @NotBlank
     private String address;
 
-    @NotBlank
+    @NotNull
     private StoreCategory storeCategory;
 
     @NotBlank
     private String thumbnailUrl;
 
-    @Min(8000)
+    @NotNull
     private BigDecimal minimumAmount;
 
-    @Min(10000)
+    @NotNull
     private BigDecimal minimumDeliveryAmount;
 
     @NotBlank
