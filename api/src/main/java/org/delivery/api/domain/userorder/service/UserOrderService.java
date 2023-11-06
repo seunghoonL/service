@@ -71,6 +71,12 @@ public class UserOrderService {
     }
 
 
+    public UserOrderEntity getUserOrderWithOutStatusThrow(Long id, Long userId){
+        return userOrderRepository.findFirstByIdAndUserId(id, userId)
+                .orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));
+    }
+
+
 
     public UserOrderEntity getUserWithThrow(Long id, Long userId){
         return userOrderRepository.findFirstByIdAndStatusAndUserId(id, UserOrderStatus.REGISTERED, userId)

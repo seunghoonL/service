@@ -1,6 +1,6 @@
 package org.delivery.api.domain.userorder.converter;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.RequiredArgsConstructor;
 import org.delivery.api.common.annotaion.Converter;
 import org.delivery.api.domain.user.model.User;
 import org.delivery.api.domain.userorder.controller.model.UserOrderResponse;
@@ -10,10 +10,9 @@ import org.delivery.db.userorder.UserOrderEntity;
 import java.math.BigDecimal;
 import java.util.List;
 
-@Slf4j
+@RequiredArgsConstructor
 @Converter
 public class UserOrderConverter {
-
     public UserOrderEntity toEntity(User user, List<StoreMenuEntity> entity){
 
         var totalAmount = entity.stream()
@@ -44,4 +43,6 @@ public class UserOrderConverter {
                 .receivedAt(entity.getReceivedAt())
                 .build();
     }
+
+
 }
