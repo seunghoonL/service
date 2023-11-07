@@ -1,5 +1,9 @@
 
 spring:
+  application:
+    name: store-admin
+
+
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/delivery?useSSL=false&useUnicode=true&allowPublicKeyRetrieval=true
@@ -16,22 +20,14 @@ spring:
 
 
 
-
 logging.level:
   org.hibernate.SQL: debug
   org.hibernate.type: trace
 
 
 
-token:
-  secret:
-    key: SpringBootJWTHelperTokenSecretKeyValue123!@#
-  access-token:
-    plus-hour: 1
-  refresh-token:
-    plus-hour: 12
 server:
-  port: 8080
+  port: 8081
 
 
 
