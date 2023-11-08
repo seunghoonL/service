@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org"  lang="kor">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Main Page</h1>
+    <ui>
+
+        <li th:text="${#authentication.name}"></li>
+        <li th:text="${#authentication.principal.storeName}"></li>
+        <li th:text="${#authentication.principal.role}"></li>
+        <li th:text="${#authentication}"> </li>
+
+    </ui>
+
+
+
+</body>
+</html>
