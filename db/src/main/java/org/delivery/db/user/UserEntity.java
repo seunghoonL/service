@@ -33,9 +33,9 @@ public class UserEntity extends BaseEntity {
     @Column(length = 150, nullable = false)
     private String address;
 
-    private LocalDateTime registerAt;
+    private LocalDateTime registeredAt;
 
-    private LocalDateTime unregisterAt;
+    private LocalDateTime unregisteredAt;
 
     private LocalDateTime lastLoginAt;
 

@@ -12,6 +12,7 @@ import org.delivery.api.domain.userorder.controller.model.UserOrderDetailRespons
 import org.delivery.api.domain.userorder.controller.model.UserOrderRequest;
 import org.delivery.api.domain.userorder.controller.model.UserOrderResponse;
 import org.delivery.api.domain.userorder.converter.UserOrderConverter;
+import org.delivery.api.domain.userorder.producer.UserOrderProducer;
 import org.delivery.api.domain.userorder.service.UserOrderService;
 import org.delivery.api.domain.userordermenu.converter.UserOrderMenuConverter;
 import org.delivery.api.domain.userordermenu.service.UserOrderMenuService;
@@ -42,8 +43,7 @@ public class UserOrderBusiness {
 
     private final StoreMenuConverter storeMenuConverter;
 
-
-
+    private final UserOrderProducer userOrderProducer;
 
 
     public UserOrderResponse userOrder(UserOrderRequest request, User user){
@@ -69,6 +69,10 @@ public class UserOrderBusiness {
 
         // 주문 메뉴 등록 남기기
         userOrderMenuEntity.forEach(it -> userOrderMenuService.order(it));
+
+
+        // 비동기로 가맹점에 주문 알림 전송 producer -> exchange 로 전송
+        userOrderProducer.sendOrder(gainEntity);
 
         return userOrderConverter.toResponse(gainEntity);
     }

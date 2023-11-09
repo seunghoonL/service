@@ -22,12 +22,12 @@ public class StoreMenuService {
 
     private final StoreMenuRepository storeMenuRepository;
 
-    private static AtomicInteger sequence;
+    private static int sequence = 1;
 
     public StoreMenuEntity register(StoreMenuEntity storeMenuEntity){
         return Optional.ofNullable(storeMenuEntity).map(it -> {
                         storeMenuEntity.setStatus(StoreMenuStatus.REGISTERED);
-                        storeMenuEntity.setSequence(sequence.incrementAndGet());
+                        storeMenuEntity.setSequence(sequence++);
                 return  storeMenuRepository.save(storeMenuEntity);
                 })
                 .orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT));

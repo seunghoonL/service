@@ -3,10 +3,15 @@ spring:
   application:
     name: store-admin
 
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: admin
+    password: admin123
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/delivery?useSSL=false&useUnicode=true&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3306/delivery_service?useSSL=false&useUnicode=true&allowPublicKeyRetrieval=true
     username: root
     password: root1234!!
 

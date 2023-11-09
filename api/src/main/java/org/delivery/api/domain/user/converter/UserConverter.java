@@ -39,8 +39,8 @@ public class UserConverter {
                             .status(entity.getStatus())
                             .email(entity.getEmail())
                             .address(entity.getAddress())
-                            .registerAt(entity.getRegisterAt())
-                            .unregisterAt(entity.getUnregisterAt())
+                            .registerAt(entity.getRegisteredAt())
+                            .unregisterAt(entity.getUnregisteredAt())
                             .lastLoginAt(entity.getLastLoginAt())
                             .build()).orElseThrow(() -> new ApiException(ErrorCode.NULL_POINT, "UserEntity Null"));
     }
